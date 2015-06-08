@@ -1,160 +1,159 @@
 <openerp>
- <data>
-  <record model="ir.ui.view" id="academy_course_view_tree">
-   <field name="name">academy.course_view_tree</field>
-   <field name="model">academy.course</field>
-   <field name="arch" type="xml">
-    <tree>
-     <field name="name" />
-     <field name="description" />
-     <field name="responsible_id" />  
-    </tree>
-   </field>
-  </record>
-  
-  <record model="ir.ui.view" id="academy_course_view_search">
-   <field name="name">academy.course_view_search</field>
-   <field name="model">academy.course</field>
-   <field name="arch" type="xml">
-    <search>
-     <field name="name" />
-     <field name="description" />
-     
-   <field name="responsible_id" />
-    </search>
-   </field>
-  </record>
-
-  <record model="ir.ui.view" id="academy_course_view_form">
-   <field name="name">academy.course_view_form</field>
-   <field name="model">academy.course</field>
-   <field name="arch" type="xml">
-    <form string="Course">
-     <sheet>
-     
-       <div class="oe_title oe_left">
-            <div class="oe_edit_only">
-                <label for="name"/> 
-           </div>
-           <h1>
-              <field name="name" />
-          </h1>
-      </div>
-      <group>
-          <field name="responsible_id" />
-      </group>
-
-                
-      <notebook >
-       <page string="Description">
-        <field name="description" />
-       </page>
-       <page string="Sessions">
-           <field name="session_ids" readonly="1">
-               <tree editable="bottom">
-                  <field name="name" />
-                  <field name="instructor_id" /> 
-                  <field name="begin_date" />
-                  <field name="end_date" /> 
-                   
-               </tree>
-           </field>
-       </page>
-      </notebook>
-     </sheet>
-    </form>
-   </field>
-  </record>
-  <record model="ir.actions.act_window" id="action_course">
-   <field name="name">Courses</field>
-   <field name="res_model">academy.course</field>
-   <field name="view_mode">tree,form</field>
-  </record>
-
-  <menuitem id="menu_academy" name="Academy" />
-  <menuitem id="menu_course_top" name="Academy" parent="menu_academy" />
-  <menuitem id="menu_course_action" name="Course" action="action_course"
-   parent="menu_course_top" />
-  
-
- 
- <record model="ir.ui.view" id="academy_session_view_tree">
-   <field name="name">academy.session_view_tree</field>
-   <field name="model">academy.session</field>
-   <field name="arch" type="xml">
-    <tree>
-      <field name="name" />
-      <field name="course_id" />
-     
-      <field name="instructor_id" /> 
-      <field name="begin_date" />
-      <field name="end_date" /> 
-    </tree>
-   </field>
-  </record>
-  
-  
-  <record model="ir.ui.view" id="academy_session_view_search">
-   <field name="name">academy.session_view_search</field>
-   <field name="model">academy.session</field>
-   <field name="arch" type="xml">
-    <search>
-     <field name="name" />
-      <field name="course_id" />
-     
-      <field name="instructor_id" /> 
-    </search>
-   </field>
-  </record>
-
-  <record model="ir.ui.view" id="academy_session_view_form">
-   <field name="name">academy.session_view_form</field>
-   <field name="model">academy.session</field>
-   <field name="arch" type="xml">
-    <form string="Session">
-     <sheet>
-     
-       <div class="oe_title oe_left">
-            <div class="oe_edit_only">
-                <label for="name"/> 
-           </div>
-           <h1>
-              <field name="name" />
-          </h1>
-      </div>
-      <group>
-        <group>
-            <field name="instructor_id" />
-            <field name="course_id" /> 
-              
-        </group>
-        <group>
-            <field name="begin_date" />
-            <field name="end_date" /> 
-              
-        </group>
-      </group>
-      <separator string="Attendees" />
-      <field name="attendee_ids" />
-                
-      
-     </sheet>
-    </form>
-   </field>
-  </record>
-  
-  <record model="ir.actions.act_window" id="action_session">
-   <field name="name">Sessions</field>
-   <field name="res_model">academy.session</field>
-   <field name="view_mode">tree,form</field>
-  </record>
-
-  <menuitem id="menu_session_action" name="Session" action="action_session"
-   parent="menu_course_top" />
-  <menuitem id="menu_partner_action" name="Partner" action="base.action_partner_form"
-   parent="menu_course_top" />
-   
-  </data>
+    <data>
+        <record model="ir.ui.view" id="academy_course_view_tree">
+            <field name="name">academy.course_view_tree</field>
+            <field name="model">academy.course</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="description" />
+                    <field name="responsible_id" />
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="academy_course_view_search">
+            <field name="name">academy.course_view_search</field>
+            <field name="model">academy.course</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name" />
+                    <field name="description" />
+                    
+                    <field name="responsible_id" />
+                </search>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="academy_course_view_form">
+            <field name="name">academy.course_view_form</field>
+            <field name="model">academy.course</field>
+            <field name="arch" type="xml">
+                <form string="Course">
+                    <sheet>
+                        
+                        <div class="oe_title oe_left">
+                            <div class="oe_edit_only">
+                                <label for="name"/>
+                            </div>
+                            <h1>
+                                <field name="name" />
+                            </h1>
+                        </div>
+                        <group>
+                            <field name="responsible_id" />
+                        </group>
+                        
+                        
+                        <notebook >
+                            <page string="Description">
+                                <field name="description" />
+                            </page>
+                            <page string="Sessions">
+                                <field name="session_ids" readonly="1">
+                                    <tree editable="bottom">
+                                        <field name="name" />
+                                        <field name="instructor_id" />
+                                        <field name="begin_date" />
+                                        <field name="end_date" />
+                                        
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_course">
+            <field name="name">Courses</field>
+            <field name="res_model">academy.course</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <menuitem id="menu_academy" name="Academy" />
+        <menuitem id="menu_course_top" name="Academy" parent="menu_academy" />
+        <menuitem id="menu_course_action" name="Course" action="action_course" parent="menu_course_top" />
+        
+        
+        
+        <record model="ir.ui.view" id="academy_session_view_tree">
+            <field name="name">academy.session_view_tree</field>
+            <field name="model">academy.session</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="course_id" />
+                    
+                    <field name="instructor_id" />
+                    <field name="begin_date" />
+                    <field name="end_date" />
+                </tree>
+            </field>
+        </record>
+        
+        
+        <record model="ir.ui.view" id="academy_session_view_search">
+            <field name="name">academy.session_view_search</field>
+            <field name="model">academy.session</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name" />
+                    <field name="course_id" />
+                    
+                    <field name="instructor_id" />
+                </search>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="academy_session_view_form">
+            <field name="name">academy.session_view_form</field>
+            <field name="model">academy.session</field>
+            <field name="arch" type="xml">
+                <form string="Session">
+                    <sheet>
+                        
+                        <div class="oe_title oe_left">
+                            <div class="oe_edit_only">
+                                <label for="name"/>
+                            </div>
+                            <h1>
+                                <field name="name" />
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="instructor_id" />
+                                <field name="course_id" />
+                                
+                            </group>
+                            <group>
+                                <field name="begin_date" />
+                                <field name="end_date" />
+                                
+                            </group>
+                        </group>
+                        <separator string="Attendees" />
+                        <field name="attendee_ids" />
+                        
+                        
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="action_session">
+            <field name="name">Sessions</field>
+            <field name="res_model">academy.session</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <menuitem id="menu_session_action" name="Session" action="action_session" parent="menu_course_top"
+            />
+        <menuitem id="menu_partner_action" name="Partner" action="base.action_partner_form"
+            parent="menu_course_top" />
+        
+    </data>
 </openerp>
 
 
