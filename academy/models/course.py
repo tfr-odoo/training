@@ -31,3 +31,9 @@ class res_partner(models.Model):
     session_ids = fields.Many2many('academy.session')
     
     
+class billable_course(models.Model):
+    _inherit = 'academy.course'
+
+    product_id = fields.Many2one("product.template", string="Product")
+    
+    

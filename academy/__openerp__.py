@@ -20,11 +20,12 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base', 'product'],
 
     # always loaded
     'data': [
         'views/course.xml',
+        'views/billable_product.xml',
         # 'security/ir.model.access.csv',
         #'templates.xml',
     ],
