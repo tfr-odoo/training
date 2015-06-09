@@ -136,7 +136,8 @@
                             <group>
                                 <field name="begin_date" />
                                 <field name="end_date" />
-                                <field name="active" />                              
+                                <field name="active" /> 
+                                <field name="level" />                             
                             </group>
                         </group>
                         <separator string="Attendees" />

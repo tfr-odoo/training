@@ -35,6 +35,7 @@ class session(models.Model):
     nb_seats = fields.Integer(default=10)
     percent_seat_taken = fields.Float(compute='_get_percent_seats')
     active = fields.Boolean(default=True)
+    level = fields.Selection([(1, 'Beginner'), (2, 'advanced'), (3, 'expert')])
 
     @api.one
     @api.depends('nb_seats', 'attendee_ids')
@@ -45,7 +46,28 @@ class session(models.Model):
         else:
             self.percent_seat_taken = 0.0
       
-      
+    def _get_max_level(self, partner):
+        level = []
+        for categ in partner.category_id:
+            if "Teacher / Level" in categ.name:
+                level.append(int(categ.name.split(' ')[-1]))
+                
+        return max(level) if level else 0
+    
+    @api.onchange('level')
+    def _verify_level(self):
+        if self.level and self.instructor_id and self._get_max_level(self.instructor_id) < self.level:
+            self.instructor_id = False
+            
+        domain= []
+        if self.level:
+            for i in xrange(3, self.level - 1, -1):
+                domain.append(('category_id.name', 'ilike', "Teacher / Level %s" % i))
+            domain = ['|'] * (len(domain) - 1)  + domain
+        domain.append(('is_instructor', '=', True))
+        
+        
+        return {'domain' : {'instructor_id' : domain}}
       
       
       
@@ -54,6 +76,7 @@ class session(models.Model):
     @api.onchange('nb_seats', 'attendee_ids')
     def _verify_valid_seats(self):
         if self.nb_seats < 0:
+            self.nb_seats = self._origin.nb_seats
             return {
                 'warning': {
                     'title': "Incorrect 'seats' value",
