@@ -19,7 +19,9 @@ class session(models.Model):
     name = fields.Char()
     end_date = fields.Date()
     begin_date = fields.Date()
-    instructor_id = fields.Many2one('res.partner')
+    instructor_id = fields.Many2one('res.partner', domain=['&', ('instructor', '=', True),
+                     '|', ('category_id.name', 'ilike', "Level 1"),
+                          ('category_id.name', 'ilike', "Level 2")])
     course_id = fields.Many2one('academy.course')
     attendee_ids = fields.Many2many('res.partner')
     
@@ -29,5 +31,11 @@ class res_partner(models.Model):
     _inherit = 'res.partner'
     
     session_ids = fields.Many2many('academy.session')
+    is_instructor = fields.Boolean(default=False)
+    
+
+
+
+
     
     

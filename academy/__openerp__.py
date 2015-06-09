@@ -25,6 +25,8 @@
     # always loaded
     'data': [
         'views/course.xml',
+        'views/res_partner.xml',
+        'data.xml',
         # 'security/ir.model.access.csv',
         #'templates.xml',
     ],

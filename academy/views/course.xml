@@ -123,7 +123,8 @@
                         </div>
                         <group>
                             <group>
-                                <field name="instructor_id" />
+                                <field name="instructor_id" 
+                                domain="[('is_instructor', '=', True)]"/>
                                 <field name="course_id" />
                                 
                             </group>
@@ -150,9 +151,6 @@
         
         <menuitem id="menu_session_action" name="Session" action="action_session" parent="menu_course_top"
             />
-        <menuitem id="menu_partner_action" name="Partner" action="base.action_partner_form"
-            parent="menu_course_top" />
-        
     </data>
 </openerp>
 

@@ -1,0 +1,51 @@
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="academy_partner_inherit_form">
+            <field name="name">academy.partner_inherit_form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />        
+            <field name="arch" type="xml">
+                
+                <field name="website" position="after">
+                    <field name="is_instructor" />
+                </field>             
+                <xpath expr="//page[last()]" position="after">
+                    <page string="session">
+                        
+                        <field name="session_ids" />
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="base.action_partner_form" model="ir.actions.act_window">
+            <field name="domain">[('session_ids', '=', False)]</field>
+        </record>
+        
+        <menuitem id="menu_partner_action" name="Partner" action="base.action_partner_form"
+            parent="menu_course_top" />
+        
+        <record model="ir.actions.act_window" id="action_attendee">
+            <field name="name">Attendee</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="base.view_res_partner_filter"/>
+            <field name="domain">[('session_ids', '!=', False)]</field>
+        </record>
+        
+        <menuitem id="menu_attendee_action" name="Attendee" action="action_attendee" parent="menu_course_top"
+            />
+            
+        <record model="ir.actions.act_window" id="action_instructor">
+            <field name="name">Instructor</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context" eval="{ 'search_default_category_id': 'Teacher', 
+                                   'default_is_instructor' : 1, 
+                                   'default_category_id' : [ref('academy.teacher1')]}" />
+            <field name="search_view_id" ref="base.view_res_partner_filter"/>
+        </record>
+
+        <menuitem id="menu_instructor_action" name="Instructor" action="action_instructor" parent="menu_course_top" />
+    </data>
+</openerp>
