@@ -85,9 +85,12 @@
                     <field name="name" />
                     <field name="course_id" />
                     
+                    <field name="active" />                 
                     <field name="instructor_id" />
                     <field name="begin_date" />
                     <field name="end_date" />
+                    <field name="nb_seats" />  
+                    <field name="percent_seat_taken" widget="progressbar" />               
                 </tree>
             </field>
         </record>
@@ -127,11 +130,13 @@
                                 domain="[('is_instructor', '=', True)]"/>
                                 <field name="course_id" />
                                 
+                                <field name="nb_seats" />  
+                                <field name="percent_seat_taken" widget="progressbar"/>                           
                             </group>
                             <group>
                                 <field name="begin_date" />
                                 <field name="end_date" />
-                                
+                                <field name="active" />                              
                             </group>
                         </group>
                         <separator string="Attendees" />
