@@ -2,6 +2,7 @@
 
 from openerp import models, fields, api, exceptions
 import logging
+import datetime
 
 class academy(models.Model):
     _name = 'academy.course'
@@ -45,9 +46,13 @@ class session(models.Model):
     _name = 'academy.session'
     _logger = logging.getLogger(__name__)
     
+    _order = "duration desc"
+    
     name = fields.Char()
     end_date = fields.Date()
     begin_date = fields.Date(default=lambda self: fields.Date.today())
+    duration = fields.Integer(compute="_get_duration", inverse="_set_duration", store=True)
+    duration_hours = fields.Float(compute="_get_hours")
     instructor_id = fields.Many2one('res.partner', domain=['&', ('instructor', '=', True),
                      '|', ('category_id.name', 'ilike', "Level 1"),
                           ('category_id.name', 'ilike', "Level 2")])
@@ -58,6 +63,34 @@ class session(models.Model):
     percent_seat_taken = fields.Float(compute='_get_percent_seats')
     active = fields.Boolean(default=True)
     level = fields.Selection([(1, 'Beginner'), (2, 'advanced'), (3, 'expert')])
+    attendees_count = fields.Integer(compute='_get_attendee_count', store=True)
+    
+    color = fields.Integer()
+    
+    @api.one
+    @api.depends('attendee_ids')
+    def _get_attendee_count(self):
+        self.attendees_count = len(self.attendee_ids) 
+        
+    @api.one
+    @api.depends('duration', 'end_date', 'begin_date')
+    def _get_hours(self):
+        self.duration_hours = self.duration * 8
+    
+    @api.one
+    @api.depends('end_date', 'begin_date')
+    def _get_duration(self):
+        self.duration = 0
+        if self.begin_date and self.end_date:
+            begin_date = fields.Date.from_string(self.begin_date)
+            end_date = fields.Date.from_string(self.end_date)
+            self.duration = (end_date - begin_date).days + 1
+    
+    @api.one
+    @api.onchange('durations')
+    def _set_duration(self):
+        begin_date = fields.Date.from_string(self.begin_date)
+        self.end_date = begin_date + datetime.timedelta(days=(self.duration - 1))
 
     @api.one
     @api.depends('nb_seats', 'attendee_ids')
