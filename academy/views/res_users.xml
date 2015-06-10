@@ -1,0 +1,15 @@
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="academy_res_users_inherit_form">
+            <field name="name">academy.partner_inherit_form</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form" />        
+            <field name="arch" type="xml">
+                
+                <field name="active" position="after">
+                    <field name="course_id" />
+                </field>             
+            </field>
+        </record>
+    </data>
+</openerp>
