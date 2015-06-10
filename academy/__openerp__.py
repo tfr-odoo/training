@@ -27,6 +27,7 @@
         'data.xml',
         'views/course.xml',
         'views/res_partner.xml',
+        'views/res_users.xml',
         # 'security/ir.model.access.csv',
         #'templates.xml',
     ],

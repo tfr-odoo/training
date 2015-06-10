@@ -36,6 +36,7 @@
         <menuitem id="menu_attendee_action" name="Attendee" action="action_attendee" parent="menu_course_top"
             />
             
+
         <record model="ir.actions.act_window" id="action_instructor">
             <field name="name">Instructor</field>
             <field name="res_model">res.partner</field>
