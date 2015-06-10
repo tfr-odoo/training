@@ -26,6 +26,7 @@
     'data': [
         'data.xml',
         'views/course.xml',
+        'views/session.xml',
         'views/res_partner.xml',
         'views/res_users.xml',
         'views/billable_product.xml',
