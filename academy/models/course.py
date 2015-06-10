@@ -189,3 +189,9 @@ class res_users(models.Model):
         res = self.env['academy.course'].search([('name', operator, value)])
         return [('id', 'in', [r.responsible_id.id for r in res])]
     
+class billable_course(models.Model):
+    _inherit = 'academy.course'
+
+    product_id = fields.Many2one("product.template", string="Product")
+    
+    

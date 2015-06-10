@@ -1,0 +1,37 @@
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="academy_billable_course_view_form">
+            <field name="name">academy.course_view_form</field>
+            <field name="model">academy.course</field>
+            <field name="inherit_id" eval="ref('academy_course_view_form')"/>
+            <field name="mode">primary</field>
+            <field name="priority" eval="99" />
+            <field name="arch" type="xml">
+                <field name="responsible_id" position="after">
+                    <field name="product_id" />
+                </field>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="action_billable_product">
+            <field name="name">Billable Course</field>
+            <field name="res_model">academy.course</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <record model="ir.actions.act_window.view" id="action_billable_product_tree">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="academy_course_view_tree"/>
+            <field name="act_window_id" ref="action_billable_product"/>
+        </record>
+        
+        <record model="ir.actions.act_window.view" id="action_billable_product_form">
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="academy_billable_course_view_form"/>
+            <field name="act_window_id" ref="action_billable_product"/>
+        </record>
+        
+        <menuitem id="menu_billable_course_action" name="Billable Course" action="action_billable_product"
+            parent="menu_course_top" />
+    </data>
+</openerp>
