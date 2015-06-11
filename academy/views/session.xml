@@ -49,6 +49,7 @@
                         <button name="done" type="workflow"
                                 string="Mark as done" states="confirmed"
                                 class="oe_highlight"/>
+                        <button name="export_excel" type="object" string="Export Attendee" />
                         <field name="state" widget="statusbar"/>
                     </header>
                     <sheet>

@@ -1,0 +1,29 @@
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="export_excel_view">
+            <field name="name">academy.export_excel_view</field>
+            <field name="model">academy.export_excel</field>
+            <field name="arch" type="xml">
+                <form>
+                    <field name="session_id" invisible="1" />
+                    <field name="state" invisible="1" />                
+                    <group>
+                        <field name="file_name" attrs="{'invisible' : [('state', '!=', 'step_1')]}"/>
+                        <field name="file_data" readonly="1" filename="file_name" attrs="{'invisible' : [('state', '!=', 'step_2')]}" />
+                        
+                    </group>                        
+                    <footer>
+                        <group attrs="{'invisible' : [('state', '!=', 'step_1')]}">
+                            <button name="generate_file" string="Generate File"  type="object"/>
+                            or 
+                            <button special="cancel" string="Cancel" />
+                        </group>
+                        <group>
+                            <button special="cancel" string="Close" attrs="{'invisible' : [('state', '!=', 'step_2')]}"/>
+                        </group>
+                    </footer>                    
+                </form>
+            </field>
+        </record>
+     </data>
+</openerp>

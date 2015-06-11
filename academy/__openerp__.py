@@ -34,6 +34,8 @@
         'security/groups.xml',
         'security/ir.model.access.csv',
         'security/ir.rule.csv',
+        'wizard/export_excel.xml',
+        'wizard/subscribe.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

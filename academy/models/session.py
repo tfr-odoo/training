@@ -132,3 +132,12 @@ class session(models.Model):
     @api.one
     def action_done(self):
         self.state = 'done'
+        
+    @api.multi
+    def export_excel(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'view_mode': 'form',
+            'res_model': 'academy.export_excel',
+            'target': 'new',
+        }
