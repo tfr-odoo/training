@@ -1,0 +1,9 @@
+<openerp>
+    <data>
+        <record id="group_manager" model="res.groups">
+            <field name="name">Manager</field>
+            <field name="category_id" ref="base.module_category_academy" /> 
+        </record>
+    </data>
+</openerp>
+    

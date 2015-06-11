@@ -16,7 +16,7 @@
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/master/openerp/addons/base/module/module_data.xml
     # for the full list
-    'category': 'Uncategorized',
+    'category': 'Academy',
     'version': '0.1',
 
     # any module necessary for this one to work correctly
@@ -31,8 +31,9 @@
         'views/res_users.xml',
         'views/billable_product.xml',
         'data/session_workflow.xml',
-        # 'security/ir.model.access.csv',
-        #'templates.xml',
+        'security/groups.xml',
+        'security/ir.model.access.csv',
+        'security/ir.rule.csv',
     ],
     # only loaded in demonstration mode
     'demo': [
