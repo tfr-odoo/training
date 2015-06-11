@@ -79,8 +79,7 @@
         
         <menuitem id="menu_academy" name="Academy" />
         <menuitem id="menu_course_top" name="Academy" parent="menu_academy" />
-        <menuitem id="menu_course_action" name="Course" action="action_course" parent="menu_course_top"
-            />
+        <menuitem id="menu_course_action" name="Course" action="action_course" parent="menu_course_top" />
         
     
     </data>

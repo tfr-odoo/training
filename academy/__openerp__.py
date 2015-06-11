@@ -30,6 +30,7 @@
         'views/res_partner.xml',
         'views/res_users.xml',
         'views/billable_product.xml',
+        'data/session_workflow.xml',
         # 'security/ir.model.access.csv',
         #'templates.xml',
     ],

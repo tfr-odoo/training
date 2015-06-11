@@ -29,6 +29,11 @@ class session(models.Model):
     attendees_count = fields.Integer(compute='_get_attendee_count', store=True)
     
     color = fields.Integer()
+    state = fields.Selection([
+         ('draft', "Draft"),
+         ('confirmed', "Confirmed"),
+         ('done', "Done"),
+    ], default='draft')
     
     @api.one
     @api.depends('attendee_ids')
@@ -114,4 +119,16 @@ class session(models.Model):
         if self.instructor_id and self.instructor_id in self.attendee_ids:
             raise exceptions.ValidationError("A session's instructor can't be an attendee")
         
-        
+    
+
+    @api.one
+    def action_draft(self):
+        self.state = 'draft'
+
+    @api.one
+    def action_confirm(self):
+        self.state = 'confirmed'
+
+    @api.one
+    def action_done(self):
+        self.state = 'done'
