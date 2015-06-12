@@ -14,6 +14,30 @@
             <field name="company_id" ref="base.main_company"/>
             <field name="groups_id" eval="[(6,0,[ref('base.group_user'), ref('academy.group_manager')])]"/>
         </record>
+        
+         <record id="user_responsible1" model="res.users">
+            <field name="email">resp1@academy.com</field>
+            <field name="name">responsible1 demo</field>
+            <field name="login">responsible1</field>
+            <field name="password">admin</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="groups_id" eval="[(6,0,[ref('base.group_user'), ref('academy.group_manager')])]"/>
+        </record>
+        
+        <record id="user_simple1" model="res.users">
+            <field name="email">simple1@academy.com</field>
+            <field name="name">simple1 demo</field>
+            <field name="login">simple1</field>
+            <field name="password">admin</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="groups_id" eval="[(6,0,[ref('base.group_user'), ref('academy.group_manager')])]"/>
+        </record>
+        
+        <record id="course02" model="academy.course">
+            <field name="name">Course 2</field>
+            <field name="description">Description du cours 1""</field>
+            <field name="responsible_id" ref="user_responsible1" />
+        </record>
 
     </data>
 </openerp>
