@@ -4,11 +4,13 @@ from openerp import models, fields, api
 
 class academy(models.Model):
     _name = 'academy.course'
+    
+    _inherit = 'mail.thread'
 
     def _default_user(self):
         return self.env.user 
     
-    name = fields.Char(required=True, string="Title")
+    name = fields.Char(required=True, string="Title", translate=True)
     description = fields.Text()
     responsible_id = fields.Many2one('res.users', domain=[('course_id', '=', False)])
     session_ids = fields.One2many('academy.session', 'course_id', readonly=True)

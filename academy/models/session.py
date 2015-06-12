@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 
-from openerp import models, fields, api, exceptions
+from openerp import models, fields, api, exceptions, _
 import logging
 import datetime
+from pygments.lexer import _inherit
 
 class session(models.Model):
     
     _name = 'academy.session'
+    _inherit = ['mail.thread', 'ir.needaction_mixin']
     _logger = logging.getLogger(__name__)
     
     _order = "duration desc"
@@ -18,8 +20,8 @@ class session(models.Model):
     duration_hours = fields.Float(compute="_get_hours")
     instructor_id = fields.Many2one('res.partner', domain=['&', ('instructor', '=', True),
                      '|', ('category_id.name', 'ilike', "Level 1"),
-                          ('category_id.name', 'ilike', "Level 2")])
-    course_id = fields.Many2one('academy.course')
+                          ('category_id.name', 'ilike', "Level 2")], track_visibility="onchange")
+    course_id = fields.Many2one('academy.course', track_visibility="onchange")
     attendee_ids = fields.Many2many('res.partner')
     
     nb_seats = fields.Integer(default=10)
@@ -33,7 +35,7 @@ class session(models.Model):
          ('draft', "Draft"),
          ('confirmed', "Confirmed"),
          ('done', "Done"),
-    ], default='draft')
+    ], default='draft', track_visibility="always")
     
     @api.one
     @api.depends('attendee_ids')
@@ -102,15 +104,15 @@ class session(models.Model):
             self.nb_seats = self._origin.nb_seats
             return {
                 'warning': {
-                    'title': "Incorrect 'seats' value",
-                    'message': "The number of available seats may not be negative",
+                    'title': _("Incorrect 'seats' value"),
+                    'message': _("The number of available seats may not be negative"),
                 },
             }
         if self.nb_seats < len(self.attendee_ids):
             return {
                 'warning': {
-                    'title': "Too many attendees",
-                    'message': "Increase seats or remove excess attendees",
+                    'title': _("Too many attendees"),
+                    'message': _("Increase seats or remove excess attendees"),
                 },
             }
     @api.one

@@ -50,7 +50,8 @@ class session(models.TransientModel):
             'view_mode': 'form',
             'res_model': 'academy.export_excel',
             'target': 'new',
-            'res_id' : self.id
+            'res_id' : self.id,
+
         }
         
     def _write_xlsx(self, header, data):
