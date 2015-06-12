@@ -4,6 +4,16 @@
             <field name="name">Course 1</field>
             <field name="description">Description du cours 01</field>
         </record>
+        
+        
+        <record id="user_demo_academy_manager" model="res.users">
+            <field name="email">manager@academy.com</field>
+            <field name="name">manager demo</field>
+            <field name="login">manager_demo</field>
+            <field name="password">manager</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="groups_id" eval="[(6,0,[ref('base.group_user'), ref('academy.group_manager')])]"/>
+        </record>
 
     </data>
 </openerp>

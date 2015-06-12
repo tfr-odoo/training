@@ -136,6 +136,7 @@ class session(models.Model):
 
     @api.one
     def action_draft(self):
+        import pdb; pdb.set_trace()
         self.state = 'draft'
 
     @api.one
