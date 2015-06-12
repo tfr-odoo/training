@@ -10,5 +10,12 @@
         <record model="res.partner.category" id="teacher2">
             <field name="name">Teacher / Level 3</field>
         </record>
+        
+        <record id="session_confirmed" model="mail.message.subtype">
+            <field name="name">Session Confirmed</field>
+            <field name="res_model">academy.session</field>
+            <field name="default" eval="True"/>
+            <field name="description">Session Confirmed automaticaly by the workflow</field>
+        </record>
     </data>
 </openerp>

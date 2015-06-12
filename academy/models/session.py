@@ -35,7 +35,18 @@ class session(models.Model):
          ('draft', "Draft"),
          ('confirmed', "Confirmed"),
          ('done', "Done"),
-    ], default='draft', track_visibility="always")
+    ], track_visibility="onchange", default='draft')
+    
+    @api.model
+    def _get_session_confirmed_condition(self, obj):
+        return obj.state == 'confirmed'
+    
+    _track = {
+        'state' : {
+            'academy.session_confirmed' : _get_session_confirmed_condition,
+        }
+              
+    }
     
     @api.one
     @api.depends('attendee_ids')
