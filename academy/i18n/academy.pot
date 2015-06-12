@@ -1,0 +1,442 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* academy
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-06-11 13:39+0000\n"
+"PO-Revision-Date: 2015-06-11 13:39+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: academy
+#: sql_constraint:academy.course:0
+msgid "A user can be only responsible for one course"
+msgstr ""
+
+#. module: academy
+#: model:ir.ui.menu,name:academy.menu_academy
+#: model:ir.ui.menu,name:academy.menu_course_top
+msgid "Academy"
+msgstr ""
+
+#. module: academy
+#: field:academy.session,active:0
+msgid "Active"
+msgstr ""
+
+#. module: academy
+#: view:academy.wizard:academy.wizard_form_view
+#: model:ir.actions.act_window,name:academy.launch_session_wizard
+msgid "Add Attendees"
+msgstr ""
+
+#. module: academy
+#: model:ir.actions.act_window,name:academy.action_attendee
+#: model:ir.ui.menu,name:academy.menu_attendee_action
+msgid "Attendee"
+msgstr ""
+
+#. module: academy
+#: field:academy.session,attendee_ids:0
+msgid "Attendee ids"
+msgstr ""
+
+#. module: academy
+#: view:academy.session:academy.academy_session_view_form
+#: field:academy.wizard,attendee_ids:0
+msgid "Attendees"
+msgstr ""
+
+#. module: academy
+#: field:academy.session,attendees_count:0
+msgid "Attendees count"
+msgstr ""
+
+#. module: academy
+#: field:academy.session,begin_date:0
+msgid "Begin date"
+msgstr ""
+
+#. module: academy
+#: selection:academy.session,level:0
+msgid "Beginner"
+msgstr ""
+
+#. module: academy
+#: model:ir.actions.act_window,name:academy.action_billable_product
+#: model:ir.ui.menu,name:academy.menu_billable_course_action
+msgid "Billable Course"
+msgstr ""
+
+#. module: academy
+#: view:academy.export_excel:academy.export_excel_view
+#: view:academy.wizard:academy.wizard_form_view
+msgid "Cancel"
+msgstr ""
+
+#. module: academy
+#: view:academy.export_excel:academy.export_excel_view
+msgid "Close"
+msgstr ""
+
+#. module: academy
+#: field:academy.session,color:0
+msgid "Color"
+msgstr ""
+
+#. module: academy
+#: view:academy.session:academy.academy_session_view_form
+msgid "Confirm"
+msgstr ""
+
+#. module: academy
+#: selection:academy.session,state:0
+msgid "Confirmed"
+msgstr ""
+
+#. module: academy
+#: view:academy.course:academy.academy_course_view_form
+#: model:ir.ui.menu,name:academy.menu_course_action
+msgid "Course"
+msgstr ""
+
+#. module: academy
+#: model:academy.course,name:academy.course01
+msgid "Course 1"
+msgstr ""
+
+#. module: academy
+#: field:academy.session,course_id:0
+msgid "Course id"
+msgstr ""
+
+#. module: academy
+#: model:ir.actions.act_window,name:academy.action_course
+msgid "Courses"
+msgstr ""
+
+#. module: academy
+#: field:academy.course,create_uid:0
+#: field:academy.export_excel,create_uid:0
+#: field:academy.session,create_uid:0
+#: field:academy.wizard,create_uid:0
+msgid "Created by"
+msgstr ""
+
+#. module: academy
+#: field:academy.course,create_date:0
+#: field:academy.export_excel,create_date:0
+#: field:academy.session,create_date:0
+#: field:academy.wizard,create_date:0
+msgid "Created on"
+msgstr ""
+
+#. module: academy
+#: view:academy.session:academy.academy_session_view_kaban
+msgid "Delete"
+msgstr ""
+
+#. module: academy
+#: view:academy.course:academy.academy_course_view_form
+#: field:academy.course,description:0
+msgid "Description"
+msgstr ""
+
+#. module: academy
+#: selection:academy.session,state:0
+msgid "Done"
+msgstr ""
+
+#. module: academy
+#: selection:academy.session,state:0
+msgid "Draft"
+msgstr ""
+
+#. module: academy
+#: field:academy.session,duration:0
+msgid "Duration"
+msgstr ""
+
+#. module: academy
+#: field:academy.session,end_date:0
+msgid "End date"
+msgstr ""
+
+#. module: academy
+#: view:academy.session:academy.academy_session_view_form
+msgid "Export Attendee"
+msgstr ""
+
+#. module: academy
+#: field:academy.export_excel,file_data:0
+msgid "File data"
+msgstr ""
+
+#. module: academy
+#: field:academy.export_excel,file_name:0
+msgid "File name"
+msgstr ""
+
+#. module: academy
+#: view:academy.export_excel:academy.export_excel_view
+msgid "Generate File"
+msgstr ""
+
+#. module: academy
+#: view:academy.course:academy.academy_course_view_search
+msgid "Group By"
+msgstr ""
+
+#. module: academy
+#: field:academy.course,id:0
+#: field:academy.export_excel,id:0
+#: field:academy.session,id:0
+#: field:academy.wizard,id:0
+msgid "ID"
+msgstr ""
+
+#. module: academy
+#: code:addons/academy/models/session.py:105
+#, python-format
+msgid "Incorrect 'seats' value"
+msgstr ""
+
+#. module: academy
+#: code:addons/academy/models/session.py:113
+#, python-format
+msgid "Increase seats or remove excess attendees"
+msgstr ""
+
+#. module: academy
+#: model:ir.actions.act_window,name:academy.action_instructor
+#: model:ir.ui.menu,name:academy.menu_instructor_action
+msgid "Instructor"
+msgstr ""
+
+#. module: academy
+#: field:academy.session,instructor_id:0
+msgid "Instructor id"
+msgstr ""
+
+#. module: academy
+#: field:res.partner,is_instructor:0
+msgid "Is instructor"
+msgstr ""
+
+#. module: academy
+#: field:academy.course,write_uid:0
+#: field:academy.export_excel,write_uid:0
+#: field:academy.session,write_uid:0
+#: field:academy.wizard,write_uid:0
+msgid "Last Updated by"
+msgstr ""
+
+#. module: academy
+#: field:academy.course,write_date:0
+#: field:academy.export_excel,write_date:0
+#: field:academy.session,write_date:0
+#: field:academy.wizard,write_date:0
+msgid "Last Updated on"
+msgstr ""
+
+#. module: academy
+#: field:academy.session,level:0
+msgid "Level"
+msgstr ""
+
+#. module: academy
+#: model:res.groups,name:academy.group_manager
+msgid "Manager"
+msgstr ""
+
+#. module: academy
+#: view:academy.session:academy.academy_session_view_form
+msgid "Mark as done"
+msgstr ""
+
+#. module: academy
+#: view:academy.course:academy.academy_course_view_search
+msgid "My Courses"
+msgstr ""
+
+#. module: academy
+#: field:academy.session,name:0
+msgid "Name"
+msgstr ""
+
+#. module: academy
+#: field:academy.session,nb_seats:0
+msgid "Nb seats"
+msgstr ""
+
+#. module: academy
+#: view:academy.session:academy.academy_session_view_graph
+msgid "Participations by Courses"
+msgstr ""
+
+#. module: academy
+#: model:ir.model,name:academy.model_res_partner
+#: model:ir.ui.menu,name:academy.menu_partner_action
+msgid "Partner"
+msgstr ""
+
+#. module: academy
+#: field:academy.course,product_id:0
+msgid "Product"
+msgstr ""
+
+#. module: academy
+#: view:academy.session:academy.academy_session_view_form
+msgid "Reset to draft"
+msgstr ""
+
+#. module: academy
+#: view:academy.course:academy.academy_course_view_search
+msgid "Responsible"
+msgstr ""
+
+#. module: academy
+#: field:academy.course,responsible_id:0
+msgid "Responsible id"
+msgstr ""
+
+#. module: academy
+#: view:academy.session:academy.academy_session_view_form
+#: field:academy.wizard,session_ids:0
+#: model:ir.ui.menu,name:academy.menu_session_action
+msgid "Session"
+msgstr ""
+
+#. module: academy
+#: view:academy.session:academy.academy_session_view_calendar
+msgid "Session Calendar"
+msgstr ""
+
+#. module: academy
+#: view:academy.session:academy.academy_session_view_gantt
+msgid "Session Gantt"
+msgstr ""
+
+#. module: academy
+#: field:academy.export_excel,session_id:0
+msgid "Session id"
+msgstr ""
+
+#. module: academy
+#: field:academy.course,session_ids:0
+#: field:res.partner,session_ids:0
+msgid "Session ids"
+msgstr ""
+
+#. module: academy
+#: view:academy.session:academy.academy_session_view_kaban
+msgid "Session name:"
+msgstr ""
+
+#. module: academy
+#: view:academy.course:academy.academy_course_view_form
+#: model:ir.actions.act_window,name:academy.action_session
+msgid "Sessions"
+msgstr ""
+
+#. module: academy
+#: view:academy.session:academy.academy_session_view_kaban
+msgid "Start date:"
+msgstr ""
+
+#. module: academy
+#: field:academy.export_excel,state:0
+#: field:academy.session,state:0
+msgid "State"
+msgstr ""
+
+#. module: academy
+#: selection:academy.export_excel,state:0
+msgid "Step 1"
+msgstr ""
+
+#. module: academy
+#: selection:academy.export_excel,state:0
+msgid "Step 2"
+msgstr ""
+
+#. module: academy
+#: view:academy.wizard:academy.wizard_form_view
+msgid "Subscribe"
+msgstr ""
+
+#. module: academy
+#: model:res.partner.category,name:academy.teacher1
+msgid "Teacher / Level 1"
+msgstr ""
+
+#. module: academy
+#: model:res.partner.category,name:academy.teacher2
+msgid "Teacher / Level 3"
+msgstr ""
+
+#. module: academy
+#: sql_constraint:academy.course:0
+msgid "The course title must be unique"
+msgstr ""
+
+#. module: academy
+#: code:addons/academy/models/session.py:106
+#, python-format
+msgid "The number of available seats may not be negative"
+msgstr ""
+
+#. module: academy
+#: sql_constraint:academy.course:0
+msgid "The title of the course should not be the description"
+msgstr ""
+
+#. module: academy
+#: field:academy.course,name:0
+msgid "Title"
+msgstr ""
+
+#. module: academy
+#: code:addons/academy/models/session.py:112
+#, python-format
+msgid "Too many attendees"
+msgstr ""
+
+#. module: academy
+#: model:ir.model,name:academy.model_res_users
+msgid "Users"
+msgstr ""
+
+#. module: academy
+#: selection:academy.session,level:0
+msgid "advanced"
+msgstr ""
+
+#. module: academy
+#: view:academy.session:academy.academy_session_view_kaban
+msgid "duration:"
+msgstr ""
+
+#. module: academy
+#: selection:academy.session,level:0
+msgid "expert"
+msgstr ""
+
+#. module: academy
+#: view:academy.export_excel:academy.export_excel_view
+#: view:academy.wizard:academy.wizard_form_view
+msgid "or"
+msgstr ""
+
+#. module: academy
+#: view:res.partner:academy.academy_partner_inherit_form
+msgid "session"
+msgstr ""
+
