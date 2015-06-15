@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'product', 'mail'],
+    'depends': ['base', 'product', 'mail', 'board'],
 
     # always loaded
     'data': [
@@ -37,6 +37,7 @@
         'wizard/export_excel.xml',
         'wizard/subscribe.xml',
         'reports/session.xml',
+        'views/dashboard.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
