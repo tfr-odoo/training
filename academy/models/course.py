@@ -14,7 +14,8 @@ class academy(models.Model):
     description = fields.Text()
     responsible_id = fields.Many2one('res.users', domain=[('course_id', '=', False)])
     session_ids = fields.One2many('academy.session', 'course_id', readonly=True)
-
+    picture = fields.Binary('picture')
+    
     _sql_constraints = [
         ('name_description_check',
          'CHECK(name != description)',

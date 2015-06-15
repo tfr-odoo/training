@@ -75,6 +75,19 @@
                 </form>
             </field>
         </record>
+        
+        <!-- Form inherit -->
+        <record model="ir.ui.view" id="academy_course_view_form_inherit">
+            <field name="name">academy.course_view_form</field>
+            <field name="model">academy.course</field>
+            <field name="inherit_id" ref="academy_course_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@class='oe_title oe_left']" position="before">
+                	<field name="picture" widget="image" class="oe_left oe_avatar" options="{&quot;size&quot;: [90, 90]}"/>
+        		</xpath>
+            </field>
+        </record>
+        
         <record model="ir.actions.act_window" id="action_course">
             <field name="name">Courses</field>
             <field name="res_model">academy.course</field>
@@ -88,5 +101,6 @@
     
     </data>
 </openerp>
+
 
 

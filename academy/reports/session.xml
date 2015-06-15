@@ -1,0 +1,52 @@
+<openerp>
+<data>
+    <report
+        id="report_session"
+        model="academy.session"
+        string="Session Report"
+        name="academy.report_session_view"
+        file="academy.report_session"
+        report_type="qweb-pdf" />
+
+	<report
+        id="report_session_html"
+        model="academy.session"
+        string="Session Report HTML"
+        name="academy.report_session_view"
+        file="academy.report_session"
+        report_type="qweb-html" />
+        
+    <template id="report_session_view">
+        <t t-call="report.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="report.external_layout">
+                    <div class="page">
+                        <h2 t-field="doc.name"/>
+                        <p>From <span t-field="doc.begin_date"/> to <span t-field="doc.end_date"/></p>
+                        <h3>Attendees:</h3>
+                        <ul class="atrouver">
+                        </ul>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+    
+    <!-- Extend the report -->
+    <template id="report_session_view_extend" inherit_id="report_session_view">
+       <xpath expr="//ul[@class='atrouver']" operation="replace">
+	       <table class="table">
+	          <t t-foreach="doc.attendee_ids" t-as="attendee">
+	              <t t-call="academy.report_session_view_called"/>   
+	          </t>
+	       </table>         
+       </xpath>
+    </template>
+    
+    <!--  called by t-call  -->
+    <template id="report_session_view_called">
+    	<tr><td><span t-field="attendee.name"/></td></tr>
+    </template>
+        
+</data>
+</openerp>

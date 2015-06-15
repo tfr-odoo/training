@@ -36,6 +36,7 @@
         'security/ir.rule.csv',
         'wizard/export_excel.xml',
         'wizard/subscribe.xml',
+        'reports/session.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
