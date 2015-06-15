@@ -3,3 +3,4 @@ course_manager,course manager,model_academy_course,group_manager,1,1,1,1
 session_manager,session manager,model_academy_session,group_manager,1,1,1,1
 course_read_all,course all,model_academy_course,,1,0,0,0
 session_read_all,session all,model_academy_session,,1,0,0,0
+access_academy_session_analysis,access_academy_session_analysis,model_academy_session_analysis,,1,0,0,0

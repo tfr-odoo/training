@@ -1,2 +1,3 @@
 import course
 import session
+import sessionanalysis

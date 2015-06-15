@@ -38,6 +38,7 @@
         'wizard/subscribe.xml',
         'reports/session.xml',
         'views/dashboard.xml',
+        'views/sessionanalysis.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

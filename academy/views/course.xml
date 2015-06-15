@@ -99,7 +99,16 @@
         <menuitem id="menu_course_top" name="Academy" parent="menu_academy" />
         <menuitem id="menu_course_action" name="Course" action="action_course" parent="menu_course_top" />
         
-    
+    	<record model="ir.ui.view" id="academy_course_view_tree_simplified">
+            <field name="name">academy.course_view_tree_simplified</field>
+            <field name="model">academy.course</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+        
     </data>
 </openerp>
 

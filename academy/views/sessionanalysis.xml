@@ -1,0 +1,50 @@
+<openerp>
+	<data>
+		<!-- Graph -->
+		<record model="ir.ui.view" id="academy_sessionanalysis_view_graph">
+            <field name="name">academy.sessionanalysis.graph</field>
+            <field name="model">academy.session.analysis</field>
+            <field name="arch" type="xml">
+                <graph string="Course and session analysis" type="pivot">
+                    <field name="responsible_id" type="row"/>
+                    <field name="begin_date" type="col"/>
+                    <field name="name" type="col"/>
+                    <field name="attendees_count" type="measure"/>
+                </graph>
+            </field>
+        </record>
+        
+        <!-- Search -->
+        <record model="ir.ui.view" id="sessionanalysis_search_view">
+            <field name="name">sessionanalysis.search</field>
+            <field name="model">academy.session.analysis</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="responsible_id"/>
+                    <field name="begin_date"/>
+                    <field name="duration"/>
+                    
+                    <group string="Group By">
+                        <filter name="by_instructor" string="Instructor"
+                                context="{'group_by': 'responsible_id'}"/>
+                        <filter name="by_start_date" string="Start date"
+                                context="{'group_by': 'begin_date'}"/>        
+                    </group>
+                    <filter name="last_year" string="Last year"
+                            domain="[('begin_date', '&gt;=', (context_today() - datetime.timedelta(days=365)).strftime('%Y-%m-%d'))]"/>
+                </search>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="action_session_analysis">
+            <field name="name">Sessions analysis</field>
+            <field name="res_model">academy.session.analysis</field>
+            <field name="view_mode">graph</field>
+        </record>
+        
+        <menuitem id="menu_sessionanalysis_action" name="Session analysis" action="action_session_analysis" parent="menu_course_top"
+            sequence="1"/>
+            
+	</data>
+</openerp>

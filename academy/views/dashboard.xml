@@ -4,7 +4,7 @@
     	<record model="ir.ui.view" id="academy_session_view_piegraph">
             <field name="name">academy.session.piegraph</field>
             <field name="model">academy.session</field>
-            <field name="sequence">50</field>
+            <field name="priority">50</field>
             <field name="arch" type="xml">
                 <graph string="Participations by Courses" type="pie">
                     <field name="course_id"/>
@@ -33,6 +33,7 @@
             <field name="res_model">academy.course</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="academy_course_view_tree_simplified"/>
         </record>
         <record model="ir.ui.view" id="board_session_form">
             <field name="name">Session Dashboard Form</field>
