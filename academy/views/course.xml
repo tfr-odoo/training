@@ -68,7 +68,7 @@
                             </page>
                             <page string="Learning">
                             	<field name="learn_id"/>
-                            	<field name="learn_child_id" domain="['&amp;', ('id', 'child_of', [learn_id,]), '!', ('id', '=', learn_id)]"/>
+                            	<field name="learn_child_id" domain="['&amp;', ('id', 'child_of', [learn_id, ]), '!', ('id', '=', learn_id)]"/>
                             </page>
                         </notebook>
                     </sheet>

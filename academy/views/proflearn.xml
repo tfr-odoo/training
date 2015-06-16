@@ -1,0 +1,47 @@
+<openerp>
+	<data>
+		<!--  form -->
+		<record model="ir.ui.view" id="proflearn_form_view">
+            <field name="name">proflearn.form</field>
+            <field name="model">academy.proflearn</field>
+            <field name="arch" type="xml">
+                <form string="proflearn Form">
+                    <sheet>
+                        <group>
+                            <field name="professor_id"/>
+                            <field name="learn_id"/>
+                            <field name="skill"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <!-- Kanban -->
+        <record model="ir.ui.view" id="view_proflearn_kanban">
+            <field name="name">view.proflearn.kanban</field>
+            <field name="model">academy.proflearn</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="professor_id"/>
+                    <field name="skill"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_semantic_html_override oe_kanban_global_click oe_kanban_card">
+                            	<a t-if="! read_only_mode" type="delete" style="position: absolute; right: 0; padding: 4px; diplay: inline-block">X</a>
+                                <div class="oe_kanban_details">
+                                    <h4 class="oe_partner_heading"><a type="open"><field name="professor_id"/></a></h4>
+                                </div>
+                                <field name="skill" widget="priority"/>
+                                
+                                <div class="oe_clear"/>
+
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        
+	</data>
+</openerp>
