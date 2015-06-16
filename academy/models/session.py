@@ -154,3 +154,8 @@ class session(models.Model):
             'res_model': 'academy.export_excel',
             'target': 'new',
         }
+
+    @api.multi
+    def print_sessions(self):
+        return self.env['report'].get_action([], 'academy.report_session_view_selsessions')
+    

@@ -4,7 +4,7 @@
         id="report_session"
         model="academy.session"
         string="Session Report"
-        name="academy.report_session_view"
+        name="academy.report_session_view_totr"
         file="academy.report_session"
         report_type="qweb-pdf" />
 
@@ -12,23 +12,27 @@
         id="report_session_html"
         model="academy.session"
         string="Session Report HTML"
-        name="academy.report_session_view"
+        name="academy.report_session_view_totr"
         file="academy.report_session"
         report_type="qweb-html" />
         
-    <template id="report_session_view">
+    <template id="report_session_view_totr">
         <t t-call="report.html_container">
             <t t-foreach="docs" t-as="doc">
-                <t t-call="report.external_layout">
-                    <div class="page">
-                        <h2 t-field="doc.name"/>
-                        <p>From <span t-field="doc.begin_date"/> to <span t-field="doc.end_date"/></p>
-                        <h3>Attendees:</h3>
-                        <ul class="atrouver">
-                        </ul>
-                    </div>
-                </t>
-            </t>
+	            <t t-raw="translate_doc(doc.id, doc_model, 'instructor_id.lang', 'academy.report_session_view')"/>
+	        </t>
+        </t>
+    </template>
+    
+    <template id="report_session_view">
+        <t t-call="report.external_layout">
+            <div class="page">
+                <h2 t-field="o.name"/>
+                <p>From <span t-field="o.begin_date"/> to <span t-field="o.end_date"/></p>
+                <h3>Attendees:</h3>
+                <ul class="atrouver">
+                </ul>
+            </div>
         </t>
     </template>
     
@@ -36,7 +40,7 @@
     <template id="report_session_view_extend" inherit_id="report_session_view">
        <xpath expr="//ul[@class='atrouver']" operation="replace">
 	       <table class="table">
-	          <t t-foreach="doc.attendee_ids" t-as="attendee">
+	          <t t-foreach="o.attendee_ids" t-as="attendee">
 	              <t t-call="academy.report_session_view_called"/>   
 	          </t>
 	       </table>         
@@ -45,8 +49,30 @@
     
     <!--  called by t-call  -->
     <template id="report_session_view_called">
-    	<tr><td><span t-field="attendee.name"/></td></tr>
+    	<tr>
+    		<td><span t-field="attendee.name"/></td>
+    		<td><img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('QR', attendee.name, 200, 200)"/></td>
+    		<td><img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', attendee.name, 200, 50)"/></td>	
+    	</tr>
     </template>
-        
+    
+    <template id="report_session_view_selsessions">
+        <t t-call="report.html_container">
+            <t t-foreach="docs" t-as="doc">
+	            <t t-raw="translate_doc(doc.id, doc_model, 'instructor_id.lang', 'academy.report_session_view')"/>
+	        </t>
+        </t>
+    </template>
+      
+    <report 
+            id="action_report_session_view_selsessions"
+            model="academy.session"
+            string="Sessions with more than 2 attendees"
+            report_type="qweb-pdf"
+            name="academy.report_session_view_selsessions"
+            file="academy.report_session_view_selsessions"
+            menu="False"
+        />
+          
 </data>
 </openerp>

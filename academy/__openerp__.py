@@ -39,6 +39,7 @@
         'reports/session.xml',
         'views/dashboard.xml',
         'views/sessionanalysis.xml',
+        'views/learning.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

@@ -15,6 +15,8 @@ class academy(models.Model):
     responsible_id = fields.Many2one('res.users', domain=[('course_id', '=', False)])
     session_ids = fields.One2many('academy.session', 'course_id', readonly=True)
     picture = fields.Binary('picture')
+    learn_id = fields.Many2one('academy.learning')
+    learn_child_id = fields.Many2one('academy.learning')
     
     _sql_constraints = [
         ('name_description_check',
@@ -62,7 +64,7 @@ class res_users(models.Model):
     def _get_course(self):
         course = self.env['academy.course'].search([('responsible_id', '=', self.id)])  
         self.course_id = course[0] if course else False
-    
+        
     @api.one   
     def _set_course(self):
         courses = self.env['academy.course'].search([('responsible_id', '=', self.id)])  
