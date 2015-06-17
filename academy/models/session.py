@@ -10,7 +10,7 @@ class session(models.Model):
     _name = 'academy.session'
     _inherit = ['mail.thread', 'ir.needaction_mixin']
     _logger = logging.getLogger(__name__)
-    
+    _description="session"
     _order = "duration desc"
     
     name = fields.Char()
@@ -36,6 +36,8 @@ class session(models.Model):
          ('confirmed', "Confirmed"),
          ('done', "Done"),
     ], track_visibility="onchange", default='draft')
+    country_id = fields.Many2one('res.country', related='course_id.responsible_id.partner_id.country_id')
+    responsible_id = fields.Many2one('res.users', domain=[('course_id', '=', False)], related="course_id.responsible_id")
     
     @api.model
     def _get_session_confirmed_condition(self, obj):
@@ -159,3 +161,13 @@ class session(models.Model):
     def print_sessions(self):
         return self.env['report'].get_action([], 'academy.report_session_view_selsessions')
     
+
+    @api.one
+    def send_reminder_email(self):
+        self.env['email.template'].search([('name', '=', 'session reminder')]).send_mail(self.id, force_send=True)
+        
+    @api.model
+    def check_to_send(self):
+        self.env['academy.session'].search([()]).send_reminder_email()
+        
+        

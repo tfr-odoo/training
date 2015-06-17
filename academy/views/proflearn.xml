@@ -10,10 +10,24 @@
                         <group>
                             <field name="professor_id"/>
                             <field name="learn_id"/>
-                            <field name="skill"/>
+                            <field name="skill" widget="priority"/>
                         </group>
                     </sheet>
                 </form>
+            </field>
+        </record>
+        
+        <!-- tree -->
+		<record model="ir.ui.view" id="proflearn_tree_view">
+            <field name="name">proflearn.tree</field>
+            <field name="model">academy.proflearn</field>
+            <field name="priority">16</field>
+            <field name="arch" type="xml">
+                <tree string="proflearn List">
+                     <field name="professor_id"/>
+                     <field name="learn_id"/>
+                     <field name="skill"/>
+                </tree>
             </field>
         </record>
         

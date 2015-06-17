@@ -40,6 +40,7 @@
             <field name="arch" type="xml">
                 <form string="Session">
                     <header>
+                    	<button type="object" name="send_reminder_email" string="Send reminder"/>
                         <button name="draft" type="workflow"
                                 string="Reset to draft"
                                 states="confirmed,done"/>
@@ -77,6 +78,7 @@
                                 <field name="end_date" />
                                 <field name="active" />
                                 <field name="level" />
+                                <field name="country_id" />
                             </group>
                         </group>
                         <separator string="Attendees" />

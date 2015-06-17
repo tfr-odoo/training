@@ -11,7 +11,7 @@ class academy(models.Model):
         return self.env.user 
     
     name = fields.Char(required=True, string="Title", translate=True)
-    description = fields.Text()
+    description = fields.Text(copy=False)
     responsible_id = fields.Many2one('res.users', domain=[('course_id', '=', False)])
     session_ids = fields.One2many('academy.session', 'course_id', readonly=True)
     picture = fields.Binary('picture')
