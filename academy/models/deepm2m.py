@@ -70,7 +70,7 @@ class Professor(models.Model):
             'view_mode': 'tree,form',
             'res_model': 'academy.proflearn',
             'type': 'ir.actions.act_window',
-            'domain': [['learn_id', 'in', self.learn_ids.ids]],
+            'domain': [['professor_id', '=', self.id]],
             'context': {'default_professor_id': self.id},
         }
             

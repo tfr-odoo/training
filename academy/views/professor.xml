@@ -25,18 +25,9 @@
 		                    <button class="oe_stat_button oe_inline" type="object" name="skills_m2o_list">
 		                     	<field name="prc_skills" string="Skills" widget="percentpie"/>
 		                    </button>
-		                    
-		                    
-		                    
-		                    
-		                    
-		                    
-		                    
-		                    
-		                    
-							<!-- <button class="oe_stat_button oe_inline" type="object" name="skills_list">
+		                    <button class="oe_stat_button oe_inline" type="object" name="skills_list">
 								<field name="skills_daily" string="Skills" widget="barchart"/>
-							</button> -->
+							</button>
 						</div>
                     	<field name="picture" widget="image" class="oe_left oe_avatar" options="{&quot;size&quot;: [90, 90]}"/>
                     	<div class="oe_title oe_left">
