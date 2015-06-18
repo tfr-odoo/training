@@ -1,37 +1,60 @@
 <openerp>
-    <data>
-	 <template id="index">
-	 	<t t-call="website.layout">
-		 	<t t-set="title">Academy</t>
-		 	<div class="oe_structure">
-		 		<div class="container">
-				 	<ul t-foreach="teachers" t-as="teacher">
-				 		<a t-attf-href="/academy/{{ slug(teacher) }}"><li t-esc="teacher.name"/></a>
-				 		<ul t-foreach="teacher.learn_ids" t-as="skill">
-				 			<t t-if="skill_odd">
-				 				<li t-esc="skill.name" class="en_rouge"/>
-				 			</t>
-				 			<t t-if="skill_even">
-				 				<li t-esc="skill.name" class="en_bleu"/>
-				 			</t>
-				 		</ul>
-				 	</ul>
-			 	</div>
-		 	</div>
-	 	</t>
-	 </template>  
-	  
+    <data>  
 	 <template id="prof">
 	 	<t t-call="website.layout">
 		 	<t t-set="title">Academy</t>
 		 	<div class="oe_structure">
 		 		<div class="container">
-		 			<h1><t t-esc="teacher.name"/></h1>
-		 				
+		 			<h1 t-field="teacher.name"/>
+		 			<hr/>
+		 			<p>Last modified: <i t-field="teacher.write_date" t-field-options='{"format": "long"}'/></p>
+		 			<hr/>
+		 			<div t-field="teacher.biography"/>
 		 		</div>
 		 	</div>
 		 </t>
 	 </template>
+	 
+	  <template id="learning">
+	 	<t t-call="website.layout">
+		 	<t t-set="title">Academy</t>
+		 	<div class="oe_structure">
+		 		<div class="container">
+		 			<h1 t-field="learning.name"/>
+		 			<hr/>
+		 			<table class="table">
+		 		 		<thead>
+		 		 			<tr>
+		 		 				<th>Name</th>
+		 		 			</tr>
+		 		 		</thead>
+		 		 		<tbody>
+		 		 			<t t-foreach="learning.professor_ids" t-as="teacher">
+		 		 				<tr>
+									<td>
+										<a t-attf-href="/academy/{{ slug(teacher) }}"><t t-esc="teacher.name"/></a>
+									</td>		 					
+		 		 				</tr>
+				 			</t>		
+		 		 		</tbody>
+		 		 	</table>
+		 		 	
+		 		</div>
+		 	</div>
+		 </t>
+	 </template>
+	 
+	 <!-- <template id="prof_inherit" inherit_id="academy.prof" priority="13">
+	 	<xpath expr="//div[@t-field]" position="replace">
+	 	
+	 	</xpath>
+	 </template>
+	 
+	 <template id="prof_inherit2" inherit_id="academy.prof" priority="14">
+	 	<xpath expr="//div[@t-field]" position="before">
+	 		<hr/>
+	 	</xpath>
+	 </template> -->
 	 
 <!--         <template id="listing"> -->
 <!--           <ul> -->
@@ -52,25 +75,30 @@
         <!--   </dl> -->
         <!-- </template> -->
         
-	    <template page="True" id="website.identity" name="identity">
+	    <template page="True" id="website.profs" name="profs">
 	    	<t t-call="website.layout">
 		 	<t t-set="title">Academy</t>
 		 	<div class="oe_structure">
 		 		<div class="container">
 		 			<h1>My awesome title</h1>
-		 				
 		 		 	<table class="table">
 		 		 		<thead>
 		 		 			<tr>
 		 		 				<th>Name</th>
+		 		 				<th>Skills</th>
 		 		 			</tr>
 		 		 		</thead>
 		 		 		<tbody>
 		 		 			<t t-set="teachers" t-value="request.env['academy.professor'].search([])"/>
 		 		 			<t t-foreach="teachers" t-as="teacher">
-		 		 				<tr><td>
-				 					<a t-attf-href="/academy/{{ slug(teacher) }}"><t t-esc="teacher.name"/></a>
-				 				</td></tr>
+		 		 				<tr>
+		 		 					<td><a t-attf-href="/academy/{{ slug(teacher) }}"><t t-esc="teacher.name"/></a></td>
+									<td>
+										<t t-foreach="teacher.learn_ids" t-as="skill">
+											<a t-attf-href="/skill/{{ slug(skill) }}"><t t-esc="skill.name"/></a><t t-if="not skill_last">,</t>
+										</t>
+									</td>		 					
+		 		 				</tr>
 				 			</t>		
 		 		 		</tbody>
 		 		 	</table>
@@ -79,9 +107,9 @@
 		 </t>
 	    </template>
 	    
-	    <record id="identity-menu" model="website.menu">
-            <field name="name">IDENTITY</field>
-            <field name="url">/page/identity</field>
+	    <record id="profs-menu" model="website.menu">
+            <field name="name">Professors</field>
+            <field name="url">/page/profs</field>
             <field name="parent_id" ref="website.main_menu" />
             <field name="sequence" type="int">20</field>
         </record>

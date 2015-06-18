@@ -3,19 +3,18 @@ from openerp import http
 
 class Academy(http.Controller):
     
-    @http.route('/academy/academy/', auth='public', website=True)
-    def index(self, **kw):
-        profs = http.request.env['academy.professor'].search([])
-        return http.request.render('academy.index',
-            { 'teachers': profs, 
-        })
-    
     @http.route('/academy/<model("academy.professor"):teacher>/', auth='public', website=True)
     def prof(self, teacher):
         return http.request.render('academy.prof',
             { 'teacher': teacher, 
         })
     
+    @http.route('/skill/<model("academy.learning"):learning>/', auth='public', website=True)
+    def learn(self, learning):
+        return http.request.render('academy.learning',
+            { 'learning': learning, 
+        })
+        
 #     @http.route('/academy/academy/objects/', auth='public')
 #     def list(self, **kw):
 #         return http.request.render('academy.listing', {

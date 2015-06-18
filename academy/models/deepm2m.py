@@ -27,6 +27,7 @@ class Professor(models.Model):
     nbr_skills = fields.Integer('N° of skills', compute='_get_nbr_skills')
     prc_skills = fields.Integer('Percentage of skills', compute='_get_prc_skills')
     skills_daily = fields.Char('Skills', compute='_get_skills_daily')
+    biography = fields.Html()
     
     
     @api.one

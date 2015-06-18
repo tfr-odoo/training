@@ -9,3 +9,4 @@ res_partner_category_portal,res.partner.category portal,base.model_res_partner_c
 academy_professor_portal,academy.professor portal,model_academy_professor,base.group_portal,1,1,1,0
 academy_proflearn_portal,academy.proflearn portal,model_academy_proflearn,base.group_portal,1,0,0,0
 academy_learning_portal,academy.learning portal,model_academy_learning,base.group_portal,1,0,0,0
+academy_professor_web,academy.professor web,model_academy_professor,,1,0,0,0
