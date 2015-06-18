@@ -1,14 +1,47 @@
 <openerp>
     <data>
-        <!-- <template id="listing"> -->
-        <!--   <ul> -->
-        <!--     <li t-foreach="objects" t-as="object"> -->
-        <!--       <a t-attf-href="#{ root }/objects/#{ object.id }"> -->
-        <!--         <t t-esc="object.display_name"/> -->
-        <!--       </a> -->
-        <!--     </li> -->
-        <!--   </ul> -->
-        <!-- </template> -->
+	 <template id="index">
+	 	<t t-call="website.layout">
+		 	<t t-set="title">Academy</t>
+		 	<div class="oe_structure">
+		 		<div class="container">
+				 	<ul t-foreach="teachers" t-as="teacher">
+				 		<a t-attf-href="/academy/{{ slug(teacher) }}"><li t-esc="teacher.name"/></a>
+				 		<ul t-foreach="teacher.learn_ids" t-as="skill">
+				 			<t t-if="skill_odd">
+				 				<li t-esc="skill.name" class="en_rouge"/>
+				 			</t>
+				 			<t t-if="skill_even">
+				 				<li t-esc="skill.name" class="en_bleu"/>
+				 			</t>
+				 		</ul>
+				 	</ul>
+			 	</div>
+		 	</div>
+	 	</t>
+	 </template>  
+	  
+	 <template id="prof">
+	 	<t t-call="website.layout">
+		 	<t t-set="title">Academy</t>
+		 	<div class="oe_structure">
+		 		<div class="container">
+		 			<h1><t t-esc="teacher.name"/></h1>
+		 				
+		 		</div>
+		 	</div>
+		 </t>
+	 </template>
+	 
+<!--         <template id="listing"> -->
+<!--           <ul> -->
+<!--             <li t-foreach="objects" t-as="object"> -->
+<!--               <a t-attf-href="#{ root }/objects/#{ object.id }"> -->
+<!--                 <t t-esc="object.display_name"/> -->
+<!--               </a> -->
+<!--             </li> -->
+<!--           </ul> -->
+<!--         </template> -->
         <!-- <template id="object"> -->
         <!--   <h1><t t-esc="object.display_name"/></h1> -->
         <!--   <dl> -->
@@ -18,5 +51,40 @@
         <!--     </t> -->
         <!--   </dl> -->
         <!-- </template> -->
+        
+	    <template page="True" id="website.identity" name="identity">
+	    	<t t-call="website.layout">
+		 	<t t-set="title">Academy</t>
+		 	<div class="oe_structure">
+		 		<div class="container">
+		 			<h1>My awesome title</h1>
+		 				
+		 		 	<table class="table">
+		 		 		<thead>
+		 		 			<tr>
+		 		 				<th>Name</th>
+		 		 			</tr>
+		 		 		</thead>
+		 		 		<tbody>
+		 		 			<t t-set="teachers" t-value="request.env['academy.professor'].search([])"/>
+		 		 			<t t-foreach="teachers" t-as="teacher">
+		 		 				<tr><td>
+				 					<a t-attf-href="/academy/{{ slug(teacher) }}"><t t-esc="teacher.name"/></a>
+				 				</td></tr>
+				 			</t>		
+		 		 		</tbody>
+		 		 	</table>
+		 		</div>
+		 	</div>
+		 </t>
+	    </template>
+	    
+	    <record id="identity-menu" model="website.menu">
+            <field name="name">IDENTITY</field>
+            <field name="url">/page/identity</field>
+            <field name="parent_id" ref="website.main_menu" />
+            <field name="sequence" type="int">20</field>
+        </record>
+        
     </data>
 </openerp>

@@ -41,12 +41,7 @@
                         
                         <notebook>
                             <page string="Learns">
-                                <field name="proflearn_ids">
-                                	<tree>
-                                		<field name="learn_id"/>
-                                		<field name="skill"/>
-                                	</tree>
-                                </field>
+                                <field name="learn_ids"/>
                             </page>
                         </notebook>
                     </sheet>

@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'product', 'mail', 'board'],
+    'depends': ['base', 'product', 'mail', 'board', 'website'],
 
     # always loaded
     'data': [
@@ -42,6 +42,8 @@
         'views/professor.xml',
         'views/learning.xml',
         'views/proflearn.xml',
+        'templates.xml',
+        'views/assets_frontend.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

@@ -28,6 +28,7 @@ class Professor(models.Model):
     prc_skills = fields.Integer('Percentage of skills', compute='_get_prc_skills')
     skills_daily = fields.Char('Skills', compute='_get_skills_daily')
     
+    
     @api.one
     def _get_skills_daily(self):
         a = unicode([
@@ -92,6 +93,7 @@ class Learning(models.Model):
     
     name = fields.Char(string="Name", required=True)
     picture = fields.Binary()
+    active = fields.Boolean(default=True)
     sequence = fields.Integer("Sequence", select=True)
     parent_id = fields.Many2one('academy.learning','Parent Skill', select=True, ondelete='cascade')
     child_ids = fields.One2many('academy.learning', 'parent_id', string='Child Skills')
