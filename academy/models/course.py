@@ -4,6 +4,7 @@ from openerp import models, fields, api
 
 class academy(models.Model):
     _name = 'academy.course'
+    _description = 'Academy course'
     
     _inherit = 'mail.thread'
 
@@ -16,7 +17,7 @@ class academy(models.Model):
     session_ids = fields.One2many('academy.session', 'course_id', readonly=True)
     picture = fields.Binary('picture')
     learn_id = fields.Many2one('academy.learning')
-    learn_child_id = fields.Many2one('academy.learning')
+    learn_child_id = fields.Many2one('academy.learning', groups="base.group_portal")
     
     _sql_constraints = [
         ('name_description_check',

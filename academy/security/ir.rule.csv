@@ -1,3 +1,6 @@
 "id","name","model_id/id","groups/id","domain_force","active","perm_create","perm_unlink","perm_read","perm_write"
 "session_read_only_close_id","Session Read Only when close","academy.model_academy_session","","[('state', '!=', 'done')]","True","False","True","False","True"
 "modify_only","Can only modify my course","academy.model_academy_course","academy.group_manager","['|', ('responsible_id','=',False), ('responsible_id','=',user.id)]","True","True","True","False","True"
+"portal_read_modify_only","Portal Can only access own courses","academy.model_academy_course","base.group_portal","[('responsible_id','=',user.id)]","True","False","False","True","True"
+"portal_read_modify_onlylearn","Portal Can only access own courses","academy.model_academy_learning","base.group_portal","[('id','>',10000)]","True","True","True","True","True"
+"portal_read_modify_onlyproflearn","Portal Can only access own courses","academy.model_academy_proflearn","base.group_portal","[('id','>',10000)]","True","True","True","True","True"

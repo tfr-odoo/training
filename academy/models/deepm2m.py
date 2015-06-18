@@ -5,6 +5,7 @@ from openerp import models, fields, api, exceptions, _
 
 class ProfLearn(models.Model):
     _name = 'academy.proflearn'
+    _description = 'Academy professor skill'
     
     professor_id = fields.Many2one('academy.professor')
     learn_id = fields.Many2one('academy.learning')
@@ -13,6 +14,7 @@ class ProfLearn(models.Model):
 
 class Professor(models.Model):
     _name = 'academy.professor'
+    _description = 'Academy professor'
     _inherit = 'mail.thread'
     
     name = fields.Char(string="Name", required=True)
@@ -34,21 +36,20 @@ class Professor(models.Model):
             { "tooltip" : "New 2", "value": 7},
             { "tooltip" : "New 3", "value": 7},
         ]).replace("'","\"")
-        print a
         self.skills_daily = a
         
     @api.one
     def _get_nbr_skills(self):
-        self.nbr_skills = len(self.learn_ids)
+        self.nbr_skills = self.env['academy.proflearn'].sudo().search_count([('professor_id', '=', self.id)])
             
     @api.one
     @api.depends('learn_ids')
     def _get_prc_skills(self):
-        nbr = self.env['academy.learning'].search_count([])
+        nbr = self.env['academy.learning'].sudo().search_count([])
         if not nbr:
             self.prc_skills = 0.0
         else:
-            self.prc_skills = 100.0 * len(self.learn_ids) / nbr
+            self.prc_skills = 100.0 * self.env['academy.proflearn'].sudo().search_count([('professor_id', '=', self.id)]) / nbr
             
     @api.multi
     def skills_list(self):
@@ -82,6 +83,7 @@ class Professor(models.Model):
     
 class Learning(models.Model):
     _name = 'academy.learning'
+    _description = 'Academy learning'
     _inherit = 'mail.thread'
     _parent_name = "parent_id"
     _parent_store = True

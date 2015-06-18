@@ -7,7 +7,7 @@
                 <tree>
                     <field name="name" />
                     <field name="description" />
-                    <field name="responsible_id" />
+                    <field name="responsible_id"/>
                 </tree>
             </field>
         </record>
@@ -46,7 +46,7 @@
                             </h1>
                         </div>
                         <group>
-                            <field name="responsible_id" />
+                            <field name="responsible_id"/>
                         </group>
                         
                         
@@ -67,7 +67,7 @@
                                 </field>
                             </page>
                             <page string="Learning">
-                            	<field name="learn_id"/>
+                            	<field name="learn_id" groups="base.group_portal"/>
                             	<field name="learn_child_id" domain="['&amp;', ('id', 'child_of', [learn_id, ]), '!', ('id', '=', learn_id)]"/>
                             </page>
                         </notebook>
@@ -91,6 +91,20 @@
                 	<field name="picture" widget="image" class="oe_left oe_avatar" options="{&quot;size&quot;: [90, 90]}"/>
         		</xpath>
             </field>
+        </record>
+        
+        <!-- Responsible read only for portal -->
+        <record model="ir.ui.view" id="academy_course_view_form_portal">
+            <field name="name">academy.course_view_form_portal</field>
+            <field name="model">academy.course</field>
+            <field name="inherit_id" ref="academy_course_view_form"/>
+            <field name="sequence">5</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='responsible_id']" position="attributes">
+                	<attribute name="readonly">1</attribute>
+        		</xpath>
+            </field>
+            <field name="groups_id" eval="[(6,0,[ref('base.group_portal'),])]"/>
         </record>
         
         <record model="ir.actions.act_window" id="action_course">
