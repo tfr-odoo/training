@@ -8,12 +8,6 @@ class Academy(http.Controller):
         return http.request.render('academy.prof',
             { 'teacher': teacher, 
         })
-    
-    @http.route('/skill/<model("academy.learning"):learning>/', auth='public', website=True)
-    def learn(self, learning):
-        return http.request.render('academy.learning',
-            { 'learning': learning, 
-        })
         
 #     @http.route('/academy/academy/objects/', auth='public')
 #     def list(self, **kw):

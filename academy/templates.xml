@@ -15,8 +15,10 @@
 		 </t>
 	 </template>
 	 
-	  <template id="learning">
+	  <template id="website.skilldetail" page="True" name="skilldetail">
 	 	<t t-call="website.layout">
+	 		<t t-set="learning_id" t-value="request.params['skill'].split('-')[-1]"/>
+	 		<t t-set="learning" t-value="request.env['academy.learning'].sudo().search([('id', '=', learning_id)])"/>
 		 	<t t-set="title">Academy</t>
 		 	<div class="oe_structure">
 		 		<div class="container">
@@ -95,7 +97,7 @@
 		 		 					<td><a t-attf-href="/academy/{{ slug(teacher) }}"><t t-esc="teacher.name"/></a></td>
 									<td>
 										<t t-foreach="teacher.learn_ids" t-as="skill">
-											<a t-attf-href="/skill/{{ slug(skill) }}"><t t-esc="skill.name"/></a><t t-if="not skill_last">,</t>
+											<a t-att-href="'/page/skilldetail?skill=' + slug(skill)"><t t-esc="skill.name"/></a><t t-if="not skill_last">,</t>
 										</t>
 									</td>		 					
 		 		 				</tr>
