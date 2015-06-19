@@ -1,0 +1,50 @@
+<openerp>
+	<data>
+		<template page="True" id="website.mono" name="mono">
+	    	<t t-call="website.layout">
+		 	<t t-set="title">Mono page site</t>
+		 	<div class="oe_structure">
+		 		<div class="container">
+					<div class="row">
+						<div class="col-md-2">
+							<ul>
+								<li><a href="#" onclick="javascript:menu1();">Menu1</a></li>
+								<li><a href="#" onclick="javascript:menu2();">Menu2</a></li>
+							</ul>
+						</div>
+						<div class="col-md-10">
+							<div id="monocontent">
+								
+							</div>
+						</div>
+					</div>
+		 		</div>
+		 	</div>
+		 </t>
+	    </template>
+	    
+	    <template page="True" id="website.monopage1" name="monopage1">
+			<h1>Contenu de la page1</h1>
+		 
+	    </template>
+	    
+	    <template page="True" id="website.monopage2" name="monopage2">
+			<h1>Contenu de la page2</h1>
+		 
+	    </template>
+	    
+	    <record id="mono-menu" model="website.menu">
+            <field name="name">Monopage</field>
+            <field name="url">/page/mono</field>
+            <field name="parent_id" ref="website.main_menu" />
+            <field name="sequence" type="int">5</field>
+        </record>
+        
+        <template id="academy_assets_frontend" inherit_id="website.assets_frontend">
+			<xpath expr="script[last()]" position="after">
+        		<script src="/academy/static/src/js/monopage.js"/>
+        	</xpath>
+		</template>
+		
+	</data>
+</openerp>

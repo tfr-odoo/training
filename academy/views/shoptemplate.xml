@@ -4,7 +4,7 @@
             <field name="active" eval="True"/>
         </record>
         
-        <delete model="ir.ui.view" id="website_sale.orders_followup_link" />
+        <!-- <delete model="ir.ui.view" id="website_sale.orders_followup_link" /> -->
         
 	</data>
 </openerp>

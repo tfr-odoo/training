@@ -45,6 +45,7 @@
         'templates.xml',
         'views/assets_frontend.xml',
         'views/shoptemplate.xml',
+        'views/monopage.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
